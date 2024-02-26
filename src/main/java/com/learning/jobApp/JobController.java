@@ -25,6 +25,8 @@ public class JobController {
         return service.getJob(postId);
     }
 
+
+
     @PostMapping("jobPost")
     public String addJob(@RequestBody JobPost jobPost){
         service.addJob(jobPost);
@@ -37,5 +39,15 @@ public class JobController {
         return jobPost;
     }
 
-    @DeleteMapping()
+    @DeleteMapping("jobPost/{id}")
+    public String deletePost(@PathVariable int id){
+        service.deletePost(id);
+        return "Deleted";
+    }
+
+    @GetMapping("load")
+    public String loadData(){
+        service.load();
+        return "success";
+    }
 }
