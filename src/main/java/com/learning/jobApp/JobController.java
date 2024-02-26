@@ -25,7 +25,10 @@ public class JobController {
         return service.getJob(postId);
     }
 
-
+    @GetMapping("jobPosts/keyword/{keyword}")
+    public List<JobPost> searchByKeyword(@PathVariable("keyword") String keyword){
+        return service.search(keyword);
+    }
 
     @PostMapping("jobPost")
     public String addJob(@RequestBody JobPost jobPost){
